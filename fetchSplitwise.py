@@ -8,8 +8,8 @@ jsondata = []
 parser = configparser.RawConfigParser()
 parser.read("config.ini")
 if (len(sys.argv) == 1):
-    endpoint = parser.get("config", "endpoint")
-    cookie = parser.get("config", "cookie")
+    endpoint = parser.get("splitwise", "endpoint")
+    cookie = parser.get("splitwise", "cookie")
     requestHeaders = {'Cookie' : cookie}
 
     response = requests.get(endpoint, headers=requestHeaders)
@@ -19,7 +19,7 @@ if (len(sys.argv) == 1):
         quit()
     else:
         print("Server response has been successfully received!")
-        f = open("output.json", "a")
+        f = open("splitwise_output.json", "a")
         jsondata = json.dumps(response.json())
         f.write(jsondata)
         f.close()
@@ -28,7 +28,7 @@ else:
     jsondata = f.read()
     f.close()
 
-splitwiseUserId = int(parser.get("config", "splitwise_userid"))
+splitwiseUserId = int(parser.get("splitwise", "userid"))
 
 @dataclass
 class Expense:
@@ -46,7 +46,7 @@ for expense in expenses:
         if user["user_id"] == splitwiseUserId and float(user["owed_share"]) != 0.0:
             personalExpenses.append(
                 Expense(
-                    id          = expense["id"],
+                    id          = int(expense["id"]),
                     cost        = float(user["owed_share"]),
                     description = expense["description"],
                     date        = expense["date"],

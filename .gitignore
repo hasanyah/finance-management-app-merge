@@ -130,6 +130,10 @@ dmypy.json
 
 # Ignore test output file
 output.json
+accountbook_output.json
+accountbook_category_output.json
+accountbook_expenses_output.json
+splitwise_output.json
 
 # Ignore config file
 config.ini
