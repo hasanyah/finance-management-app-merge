@@ -52,6 +52,7 @@ for expense in expenses:
                     date        = expense["date"],
                     category    = expense["category"]["name"]
                 ))
+            break
 
 totalPersonalExpense = sum(expense.cost for expense in personalExpenses)
 print(totalPersonalExpense)
