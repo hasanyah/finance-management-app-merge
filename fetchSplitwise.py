@@ -6,7 +6,7 @@ import json
 jsondata = []
 if (len(sys.argv) == 1):
     parser = configparser.RawConfigParser()
-    parser.read("config")
+    parser.read("config.ini")
     endpoint = parser.get("config", "endpoint")
     cookie = parser.get("config", "cookie")
     requestHeaders = {'Cookie' : cookie}
