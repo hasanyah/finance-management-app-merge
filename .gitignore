@@ -130,3 +130,6 @@ dmypy.json
 
 # Ignore test output file
 output.json
+
+# Ignore config file
+config.ini
